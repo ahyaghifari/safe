@@ -76,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "safe.wsgi.application"
 
+CSRF_TRUSTED_ORIGINS=["https://safe.up.railway.app" "localhost" "http://127.0.0.1:8000"]
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databas
