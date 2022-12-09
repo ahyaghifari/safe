@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container p-3">
+  <h1 class="text-4xl">{{ context }} Menu</h1>
+
+  <div
+    id="image-preview"
+    class="w-[120px] h-fit fixed top-10 right-2 lg:top-12 lg:w-[200px]"
+  >
+    <p class="text-sm">Preview</p>
+    <img
+      src="https://asset.kompas.com/crops/ZWzjpo311jV9tUM8jvLm-Nh4SNU=/14x0:1280x844/750x500/data/photo/2021/09/14/61404258eda2b.jpg"
+    />
+  </div>
+
+  <form
+    action="/menu/{{ linkform }}"
+    method="post"
+    class="form-menu mt-5 lg:w-1/2"
+  >
+    {% csrf_token %} {{ form.as_div }}
+
+    <button
+      type="submit"
+      class="px-2 py-1 text-xl mt-10 bg-neutral-900 text-neutral-100 uppercase"
+    >
+      {{ context }}
+    </button>
+  </form>
+
+  <!-- HAPUS -->
+  {% if delete %}
+  <form id="delete-menu-form">
+    {% csrf_token %}
+    <input
+      type="submit"
+      id="{{ menu.nama }}"
+      class="delete-btn px-2 py-1 mt-4 border border-neutral-900 cursor-pointer"
+      value="HAPUS"
+    />
+  </form>
+  {% endif %}
+</div>
+
+{% endblock %}

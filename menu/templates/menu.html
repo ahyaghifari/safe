@@ -1,0 +1,68 @@
+{% extends 'base.html' %}{% block content %}
+
+<div id="menu" class="p-3">
+  <h1 class="text-6xl border-y border-neutral-800 w-fit mx-auto py-3 mt-10">
+    MENU
+  </h1>
+  <p class="mt-3 text-center sm:w-10/12 md:text-xl lg:w-8/12 mx-auto">
+    Kami punya berbagai macam pilihan makanan untuk kamu, ada makanan yang bikin
+    kamu kenyang dan kudapan untuk makan-makan santai
+  </p>
+
+  <!-- KHUSU ADMIN -->
+  {% if user.is_superuser %}
+  <div id="menu-admin" class="mt-10 flex flex-col">
+    <div id="add-admin" class="self-end">
+      <a
+        href="add/"
+        class="px-2 py-1 border border-neutral-900 uppercase hover:bg-neutral-900 hover:text-neutral-100"
+        >+Tambah Menu</a
+      >
+    </div>
+    {% if messages %} {% for m in messages %}
+    <div
+      id="message-admin"
+      class="messages mt-4 bg-neutral-800 text-neutral-100 p-2 flex justify-between"
+    >
+      <p>{{ m }}</p>
+      <span class="material-symbols-sharp cursor-pointer close-message-btn">
+        close
+      </span>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+  {% endif %}
+
+  <!-- MENU MENU -->
+  <div id="menu-menu" class="mt-20 lg:mt-24">
+    {% for k in kategori %}
+    <div
+      id="{{ m.nama }}"
+      class="kategori-menu flex flex-wrap justify-around md:grid md:grid-cols-4 md:gap-2 my-24 lg:my-40 md:border-b md:border-b-neutral-300"
+    >
+      <h3
+        class="text-4xl basis-full md:text-5xl lg:text-7xl md:col-span-2 md:place-self-center capitalize"
+      >
+        {{ k.nama }}
+      </h3>
+      {% for m in menu %} {% if m.kategori.nama == k.nama %}
+      <div
+        class="my-4 flex flex-col items-center w-5/12 md:w-full hover:scale-105"
+      >
+        <p class="text-xl xl:text-2xl">{{ m.nama }}</p>
+        <img
+          src="{{ m.gambar }}"
+          class="mt-1 aspect-square object-cover object-left"
+        />
+        <!-- EDIT ADMIN -->
+        {% if user.is_superuser %}
+        <a href="edit/{{ m.nama }}" class="self-end">EDIT</a>
+        {% endif %}
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

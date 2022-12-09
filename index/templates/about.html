@@ -1,0 +1,74 @@
+{% extends 'base.html' %}{% block content %}
+
+<div
+  id="tentang"
+  class="pt-20 px-3 grid grid-cols-3 md:grid-cols-4 grid-rows-auto gap-x-3 gap-y-8 md:gap-y-24 md:pt-0 overflow-x-hidden"
+>
+  <h1
+    class="text-4xl font-semibold md:text-6xl md:place-self-end md:self-end lg:text-8xl"
+  >
+    Tentang Kami
+  </h1>
+  <img
+    class="col-span-2 col-start-2 md:col-start-3 md:mt-20"
+    data-aos="fade-left"
+    src="https://images.unsplash.com/photo-1603737388474-647a24e5fade?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  />
+  <img
+    class="row-span-2 col-span-2 place-self-center"
+    data-aos="fade-right"
+    src="https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  />
+  <p class="row-span-2 text-lg md:text-2xl xl:text-3xl text-right">
+    {% lorem 30 w %}
+  </p>
+  <p
+    class="col-span-3 md:col-span-4 text-xl md:text-2xl xl:text-3xl text-center mt-20 border-y border-neutral-800 py-3"
+  >
+    {% lorem 20 w %}
+  </p>
+  <img
+    data-aos="fade-up"
+    src="https://images.unsplash.com/photo-1529022805552-1c88a713c1c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80"
+    class="col-span-3 w-9/12 mt-20 place-self-center"
+  />
+
+  <h3
+    class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl col-span-3 md:col-span-4 mt-20 font-semibold"
+  >
+    Apa kata kalian...
+  </h3>
+  <div class="col-start-3">
+    <p class="text-xl md:text-4xl font-semibold">Anggi</p>
+    <p class="italic md:text-xl">"{% lorem 10 w %}"</p>
+  </div>
+  <div class="col-start-1 md:col-start-2 col-span-2">
+    <p class="text-xl md:text-3xl font-semibold">Budi</p>
+    <p class="italic md:text-lg">"{% lorem 10 w %}"</p>
+  </div>
+
+  <div class="col-start-2 md:col-start-3">
+    <p class="text-xl md:text-4xl font-semibold">Udin</p>
+    <p class="italic md:text-lg">"{% lorem 10 w %}"</p>
+  </div>
+  <img
+    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=884&q=80"
+    class=""
+    data-aos="fade-left"
+  />
+  <div class="col-start-1 md:col-start-2 col-span-3">
+    <p class="text-xl md:text-4xl font-semibold">Rudi</p>
+    <p class="italic md:text-lg w-3/6">"{% lorem 10 w %}"</p>
+  </div>
+  <img
+    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=884&q=80"
+    class="col-span-2"
+    data-aos="fade-left"
+  />
+  <div class="col-start-3">
+    <p class="text-xl md:text-3xl font-semibold">Yanti</p>
+    <p class="italic w-4/6 md:text-lg">"{% lorem 10 w %}"</p>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% block content %}
+
+<div id="reservation" class="p-2">
+
+  <!-- KONFIRMASI RESERVASI-->
+  {% if messages %} {% for m in messages %}
+    <div class="messages flex justify-between items-center bg-neutral-800 text-neutral-100 p-1 mt-10 text-sm md:text-lg mx-auto md:w-10/12 lg:w-8/12">
+    <p class="w-8/12 md:w-10/12 lg:w-11/12">{{ m }}</p> 
+    <span class="material-symbols-sharp cursor-pointer close-message-btn">
+        close
+      </span>
+  </div>
+  {% endfor %}{% endif %}
+
+
+  <h1 class="text-5xl mt-10 text-center">RESERVASI</h1>
+  <h3 class="text-lg mt-5 text-center">Buat dirimu tenang dan nyaman untuk acara mu dengan orang-orang terdekatmu bersama kami</h3>
+  <p class="text-center mt-14 font-semibold">
+    Isi semua formulir dibawah untuk reservasi
+  </p>
+  <form action="order" method="POST" class="form-reservation mt-10 text-xl md:text-2xl w-11/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-1/2 mx-auto">
+    {% csrf_token %} {{ form.as_div }}
+    
+    <p id="order-date" class="px-2 text-neutral-100 text-sm md:text-base"></p>
+    <button
+      type="submit"
+      class="reservation-btn px-3 py-1 mt-5 bg-neutral-800 text-neutral-100 text-xl md:text-2xl lg:text-3xl md:w-full lg:mt-8 hover:scale-105 transition duration-300 ease-in-out"
+    disabled />Pesan</button>
+  </form>
+</div>
+{% endblock %}

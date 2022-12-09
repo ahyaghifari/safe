@@ -1,0 +1,145 @@
+{% extends 'base.html' %} {% block content %}
+<div id="index" class="px-3">
+  <!-- HOME -->
+  <div
+    id="home"
+    class="w-full border-b border-neutral-800 pb-20 md:grid md:grid-cols-2"
+  >
+    <p class="mt-20 text-3xl sm:text-4xl md:col-span-2 aspect[4/3]">
+      Selamat Datang :)
+    </p>
+    <div class="my-slider w-full mt-3 mx-auto md:row-span-2 h-full">
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1603737388474-647a24e5fade?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        />
+      </div>
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col md:justify-around md:col-start-2">
+      <h1 class="text-7xl md:text-8xl mt-3 font-light md:px-2 xl:text-9xl">
+        SAFE
+      </h1>
+      <h3 class="text-neutral-100 text-3xl mt-3 leading-loose md:px-2">
+        <span class="bg-neutral-800 p-1 md:px-2"> tempat paling nyaman</span>
+        <br />
+        <span class="bg-neutral-800 p-1 md:px-2">buat kamu nongkrong</span>
+      </h3>
+    </div>
+  </div>
+
+  <!-- PROLOG -->
+  <div id="prolog" class="mt-20 lg:mt-40">
+    <h1 class="text-3xl md:text-4xl md:w-10/12 xl:w-6/12">
+      Kamu bisa nongkrong disini bersama teman-temanmu dengan nyaman
+    </h1>
+    <img
+      data-aos="fade-up"
+      src="https://images.unsplash.com/photo-1529022805552-1c88a713c1c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=725&q=80"
+      class="mt-5 w-11/12 md:w-10/12 mx-auto xl:w-7/12"
+    />
+  </div>
+
+  <!-- FASILITAS -->
+  <div id="facility" class="mt-20 lg:mt-56 lg:grid lg:grid-cols-2">
+    <h1
+      class="text-5xl md:text-6xl lg:text-7xl font-light bg-neutral-800 p-1 text-neutral-100"
+    >
+      Fasilitas
+    </h1>
+    <p class="text-2xl md:text-3xl mt-2 w-11/12 lg:px-2">
+      Buat kenyamananmu disini kami menyediakan beberapa fasilitas yang pastinya
+      dibutuhin
+    </p>
+    <ul class="font-semibold list-disc mt-5 text-xl md:text-2xl lg:text-3xl">
+      <li>- AC</li>
+      <li>- Wi-Fi</li>
+      <li>- Tempat nongkrong indoor outdoor</li>
+      <li>- Mushola</li>
+      <li>- Parkiran yang luas</li>
+    </ul>
+
+    <img
+      data-aos="fade-left"
+      src="https://images.unsplash.com/photo-1567880905822-56f8e06fe630?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+      class="mx-auto mt-2 aspect-[4/3] overflow-hidden h-[50vh] object-cover"
+    />
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="mt-32 flex flex-col">
+    <h1 class="text-6xl md:text-7xl border-b border-neutral-800">Menu</h1>
+    <p class="text-xl md:text-2xl xl:text-3xl w-11/12 xl:w-7/12 my-5">
+      Hambar banget kalo nongkrong ngga ada yang di makan dan minum, kami punya
+      banyak makanan dan minuman yang worth it pastinya buat kamu
+    </p>
+
+    <div
+      id="menu-menu"
+      class="flex flex-col md:flex-row md:flex-wrap justify-center md:justify-around items-center"
+    >
+      {% for m in menu %}
+      <div
+        data-aos="fade-up"
+        class="my-5 flex flex-col items-center overflow-hidden w-4/6 md:w-5/12"
+      >
+        <p class="text-2xl xl:text-3xl">{{ m.nama }}</p>
+        <img
+          src="{{ m.gambar }}"
+          class="mt-1 aspect-square object-cover object-left"
+        />
+      </div>
+      {% endfor %}
+    </div>
+
+    <a
+      href="/menu/"
+      class="border-y border-neutral-900 text-xl md:text-2xl p-2 w-fit text-center mx-auto mt-5 hover:scale-105 transition duration-200 hover:bg-neutral-800 hover:text-neutral-100"
+      >Masih banyak menu yang lain, yuk cek!
+    </a>
+  </div>
+
+  <!-- RESERVASI  -->
+  <div id="reservation" class="mt-40">
+    <h1 class="text-5xl md:text-6xl">Reservasi</h1>
+    <p class="text-xl text-right mt-5 md:text-2xl xl:text-4xl">
+      Kamu bisa mengadakan acara yang khusus untuk mu bersama keluarga atau
+      teman-temanmu, seperti acara ulang tahun dan meeting pentingmu
+    </p>
+    <img
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=884&q=80"
+      class="mb-5 md:mt-5 md:w-7/12 mx-auto"
+      data-aos="fade-left"
+    />
+
+    <a
+      href="/reservasi/"
+      class="px-3 py-1 border border-neutral-900 mt-10 text-xl hover:bg-neutral-900 hover:text-neutral-100 transition lg:text-right lg:text-2xl"
+      >Reservasi Sekarang</a
+    >
+  </div>
+
+  <!-- LOKASI -->
+  <div id="location" class="mt-72">
+    <h3 class="text-5xl">Ayo kalo mau nongkrong ke tempat kami aja di</h3>
+    <div class="mt-10 flex h-[55vh] justify-end items-end relative">
+      <img
+        src="https://images.unsplash.com/photo-1522120331923-bd99e51eb26e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        class="absolute w-1/2 -z-10 place-self-start left-0 lg:h-full lg:object-cover"
+        data-aos="fade-right"
+      />
+      <p
+        class="text-4xl px-1 justify-self-end text-right md:text-5xl md:leading-loose"
+      >
+        <span class="bg-neutral-100"> Jl. Gajah Mada No. 17 Kerangkeng </span>
+        <br />
+        <span class="bg-neutral-100"> Kalimantan Tenggara </span>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
