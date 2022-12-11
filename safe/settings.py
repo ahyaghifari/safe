@@ -80,16 +80,16 @@ CSRF_TRUSTED_ORIGINS=['https://safe.up.railway.app', 'http://127.0.0.1:8000']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databas
 DATABASE_URL = os.getenv("DATABASE_URL")
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
+
+# DATABASES = {
+#     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
