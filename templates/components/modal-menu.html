@@ -1,0 +1,31 @@
+<!-- MODAL MENU -->
+<div
+  id="modal-overlay"
+  class="fixed h-screen w-full flex justify-center items-center left-0 top-0"
+>
+  <div
+    id="modal-menu"
+    class="absolute bg-neutral-100 shadow-lg p-3 w-10/12 sm:w-8/12 md:w-1/2 lg:w-5/12 h-[70vh]"
+  >
+    <h3
+      id="modal-menu-name"
+      class="text-3xl md:text-4xl xl:text-5xl border-b border-neutral-300 pb-5 font-semibold"
+    >
+      Pizza
+    </h3>
+    <img
+      id="modal-menu-image"
+      src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Pizza-from-Scratch_EXPS_FT20_8621_F_0505_1_home.jpg"
+      class="mt-5 aspect-square h-1/2 object-cover mx-auto shadow-md"
+    />
+    <p
+      id="modal-menu-description"
+      class="mt-5 capitalize md:text-lg bg-neutral-200 h-[8vh] overflow-y-scroll p-2"
+    >
+      {% lorem 20 w random %}
+    </p>
+    <p class="mt-5 text-xl md:text-2xl font-semibold">
+      Harga : <span id="modal-menu-price"> </span>K
+    </p>
+  </div>
+</div>

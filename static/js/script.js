@@ -11,6 +11,41 @@ $(document).ready(function () {
         })
     }    
     
+
+    //MODAL MENU
+    $('.menu').on("click", function () {
+        nama = $(this).children('p').attr('id')
+        $.ajax({
+            type: "GET",
+            url: "/menu/detail",
+            data: {
+                menu: nama
+            },
+            dataType: "json",
+            success: function (response) {
+                menu = response.menu[0]
+                
+                $('#modal-menu-name').html(menu.nama)
+                $('#modal-menu-image').attr('src', menu.gambar)
+                $('#modal-menu-description').html(menu.deskripsi)
+                $('#modal-menu-price').html(menu.harga)
+                
+                $('body').addClass('modal-open')
+                $('#modal-overlay, #modal-menu').addClass('active')
+            }
+        });
+    });
+        
+    var modal = document.getElementById('modal-overlay')
+    var nav = document.getElementsByTagName('body')
+    window.onclick = function (event) {
+        if (event.target == modal) {
+             $('body').removeClass('modal-open')
+            $('#modal-overlay').removeClass('active')
+            $('#modal-menu').removeClass('active')
+        }
+    }
+
     //NAV MENU
     $('.nav-toggle').click(function (e) { 
         e.preventDefault();
@@ -31,6 +66,7 @@ $(document).ready(function () {
         $('.messages').remove(); 
     });
 
+    // DELETE MENU FORM
     $('#delete-menu-form').submit(function (e) {
         e.preventDefault();        
         var id = $('.delete-btn').attr('id');
@@ -74,12 +110,8 @@ $(document).ready(function () {
         duration: 1000,
         once: true
     });
-    
 
-    // if ($('#id_tanggal_pemesanan').val() != '') {
-    //         console.log("a");
-    // }
-
+    // CEK TANGGAL RESERVASI
     $('#id_tanggal_pemesanan').change(function () { 
         date = $(this).val()
 
@@ -103,6 +135,80 @@ $(document).ready(function () {
                 }
             }
         });
+
+    });
+
+    // NEWSLETTER
+    $('#newsletter-form').submit(function (e) { 
+        e.preventDefault();
+        email = $('#newsletter-input').val()
+
+        $.ajax({
+            type: "POST",
+            url: "/kontak/subscribe",
+            data: {
+                csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                email :  email
+            },
+            dataType: "json",
+            success: function (response) {
+                $('#newsletter-confirm').html(response.message)
+                $('#newsletter-confirm').addClass('p-1')
+                $('#newsletter-input').val('');
+                if (response.responses == "200") {
+                    $('#newsletter-confirm').addClass('bg-green-600')
+                    $('#newsletter-confirm').removeClass('bg-red-600');
+                } else if (response.responses == "400") {
+                    $('#newsletter-confirm').addClass('bg-red-600')
+                    $('#newsletter-confirm').removeClass('bg-green-600');
+                }
+
+            }
+        });
+        
+    });
+    $('#newsletter-input').keyup(function () {
+        $('#newsletter-confirm').removeClass('p-1')
+        $('#newsletter-confirm').html('')
+    })
+
+
+    //DELETE RESERVASI
+     $('.delete-reservation-btn').click(function (e) {
+        e.preventDefault();        
+         var id = $(this).attr('id');
+         console.log(id)
+        
+        Swal.fire({
+           html: '<span class="text-cok">Yakin ingin menghapus reservasi ini ?</span>',
+            showCancelButton: true,
+            target: 'main',
+            color: '#171717',
+            cancelButtonText: 'Tidak',
+            confirmButtonText: 'Ya',
+            background: '#f5f5f5',
+            cancelButtonColor: '#171717',
+            confirmButtonColor: '#800000',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "/reservasi/delete/",
+                    data: {
+                        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                        id: id,
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.confirm = '200') {
+                            window.location.replace('/reservasi/all')
+                        }   
+                    }
+                });
+            } else {
+                return false;
+            }
+        })
 
     });
 

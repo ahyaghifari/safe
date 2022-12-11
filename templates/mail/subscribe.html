@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUBSCRIBE | SAFE</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600&family=Thasadith&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            fontFamily: {
+              darker: ["Darker Grotesque", "sans-serif"],
+              thasadith: ["Thasadith", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-darker px-3 bg-neutral-100 text-neutral-900">
+    <h1
+      class="text-4xl text-center mt-12 border-b border-neutral-600 w-fit mx-auto pb-4"
+    >
+      SUBSCRIBE | SAFE
+    </h1>
+
+    <p class="mt-10 w-8/12">
+      Hai, terima kasih sudah mendaftarkan emailmu ke website kami.
+    </p>
+    <p class="mt-5 w-8/12">
+      Kamu akan menerima pemberitahuan tentang hal-hal baru dari kami seperti
+      daftar menu atau diskon
+    </p>
+    <p class="my-10">Terima kasih dan sehat selalu :) <b>- ahyaghifari</b></p>
+
+    {% comment %} <a
+      href="{{ unsubscribe }}"
+      class="border border-neutral-800 px-4 py-2 text-neutral-800"
+      >Unsubscribe</a
+    > {% endcomment %}
+  </body>
+</html>

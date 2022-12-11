@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render
-from reservation.forms import ReservationForm
+from django.urls import reverse
+from reservation.forms import ReservationForm, ReservationFormEdit
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from reservation.models import Reservation
 from django.core.mail import EmailMessage, send_mail
@@ -8,7 +9,9 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from datetime import datetime, timedelta
 from django.contrib import messages
-
+from datetime import datetime
+from django.utils.formats import get_format
+from django.contrib.admin.views.decorators import staff_member_required
 
 def index(request):
     context = {
@@ -17,7 +20,20 @@ def index(request):
     }
     return render(request, 'reservation.html', context)
 
+@staff_member_required
+def all(request):
+    reservasi = Reservation.objects.all()
+    return render(request, 'reservation-all.html', {'title': "ALL RESERVATION", 'reservasi': reservasi})
 
+def detail(request, id):
+    # t = get_format(tanggal)
+    context = {
+        'title' : "RESERVATION DETAIL",
+        'reservasi' : Reservation.objects.filter(id = id).get()
+    }
+    return render(request, 'reservation-detail.html', context)
+
+# CRUD
 def order(request):
     formset = ReservationForm(request.POST)
     context = {
@@ -39,6 +55,30 @@ def order(request):
         messages.success(request, "Reservasi mu kami sudah terima, silahkan cek emailmu " +
                          request.POST['email'] + " untuk konfirmasi ")
         return HttpResponseRedirect('/reservasi')
+
+@staff_member_required
+def edit(request, id):
+    getreservasi = Reservation.objects.filter(id=id).get()
+    form = ReservationFormEdit(instance=getreservasi)
+
+    if request.method == "POST":
+        formset = ReservationFormEdit(request.POST, instance=getreservasi)
+        if formset.is_valid:
+            formset.save()
+            messages.success(
+                request, "Reservasi dari " + request.POST['nama'] + " pada tanggal "+ request.POST['tanggal_pemesanan'] + " sudah berhasil diubah")
+            return HttpResponseRedirect(reverse('/reservasi/detail/' + id))
+
+    return render(request, 'reservation-edit.html', {'title' : 'RESERVATION EDIT', 'form':form, 'id':id})
+
+@staff_member_required
+def delete(request):
+    getreservasi = Reservation.objects.filter(id=request.POST['id']).get()
+    getreservasi.delete()
+    messages.success(request, "Reservasi sudah dihapus")
+    return JsonResponse({
+        'confirm' : '200'
+    })
 
 
 def cek(request):

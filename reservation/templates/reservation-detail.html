@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- -->
+{% if messages %} {% for m in messages %}
+<div
+  class="messages flex justify-between items-center bg-neutral-800 text-neutral-100 p-1 mt-16 text-sm md:text-lg mx-auto md:w-10/12 lg:w-8/12"
+>
+  <p class="w-8/12 md:w-10/12 lg:w-11/12">{{ m }}</p>
+  <span class="material-symbols-sharp cursor-pointer close-message-btn">
+    close
+  </span>
+</div>
+{% endfor %} {% endif %}
+
+<div
+  id="reservation-detail-container"
+  class="p-5 mt-10 sm:w-9/12 md:w-7/12 lg:w-6/12"
+>
+  <h1 class="text-3xl border-b border-neutral-400 pb-2">Reservasi</h1>
+
+  <div id="profil-pemesan" class="grid grid-cols-2 grid-rows-auto mt-10">
+    <p class="text-xl font-semibold">Nama Pemesan</p>
+    <p class="text-xl font-semibold">: {{ reservasi.nama }}</p>
+    <p class="text-lg">Email</p>
+    <p class="text-lg">: {{ reservasi.email }}</p>
+    <p class="text-lg">Telepon/WA</p>
+    <p class="text-lg">: {{ reservasi.telepon }}</p>
+    <a
+      href="http://wa.me/{{ reservasi.telepon }}"
+      class="underline"
+      target="_blank"
+      >Hubungi Pemesan</a
+    >
+  </div>
+
+  <div id="detail-reservasi" class="grid grid-cols-2 grid-rows-2 mt-10">
+    <p class="text-xl font-semibold">Acara</p>
+    <p class="text-xl font-semibold">: {{ reservasi.acara }}</p>
+    <p class="text-xl">Dipesan pada</p>
+    <p class="text-xl">: {{ reservasi.created_at }}</p>
+    <p class="text-xl">Tanggal Acara</p>
+    <p class="text-xl">: {{ reservasi.tanggal_pemesanan }}</p>
+    <p class="text-lg">Waktu Acara</p>
+    <p class="text-lg">: {{ reservasi.waktu_pemesanan }}</p>
+    <p class="text-lg">Ruangan</p>
+    <p class="text-lg">: {{ reservasi.ruangan }}</p>
+    <p class="text-lg">Audiens</p>
+    <p class="text-lg">: {{ reservasi.audiens }} orang</p>
+
+    <p class="text-lg mt-5">Keterangan</p>
+    <p class="text-lg mt-5 h-[25vh] overflow-y-scroll">
+      {% lorem 100 w random %}
+    </p>
+  </div>
+
+  <div id="status-reservasi" class="grid grid-cols-2 grid-rows-2 mt-10">
+    <p class="text-xl">Konfirmasi</p>
+
+    {% if reservasi.konfirmasi == True %}
+    <p class="text-xl">: Sudah dikonfirmasi</p>
+    {% else %}
+    <p class="text-xl font-semibold">: Belum dikonfirmasi</p>
+    {% endif %}
+
+    <p class="text-xl">Selesai</p>
+
+    {% if reservasi.selesai == True %}
+    <p class="text-xl">: Sudah Selesai</p>
+    {% else %}
+    <p class="text-xl font-semibold">: Belum Selesai</p>
+    {% endif %}
+  </div>
+
+  <div id="edit-reservasi" class="mt-16 text-xl flex flex-col">
+    <a
+      href="/reservasi/edit/{{ reservasi.id }}"
+      class="bg-neutral-900 text-neutral-100 px-4 py-1 mr-5 w-fit"
+      >Edit</a
+    >
+    <button
+      id="{{ reservasi.id }}"
+      class="delete-reservation-btn border border-neutral-800 px-4 py-1 w-fit mt-10"
+    >
+      Hapus
+    </button>
+  </div>
+</div>
+{%endblock%}

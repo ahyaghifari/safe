@@ -8,7 +8,7 @@
     <a href="/menu" class="w-fit my-1">Menu</a>
     <a href="/reservasi" class="w-fit my-1">Reservasi</a>
     <a href="/tentang" class="w-fit my-1">Tentang</a>
-    <a href="#" class="w-fit my-1">Kontak</a>
+    <a href="/kontak" class="w-fit my-1">Kontak</a>
   </div>
 
   <!-- MEDIA SOSIAL -->
@@ -40,19 +40,23 @@
     <div class="mt-20 md:mt-0">
       <h3 class="text-2xl text-neutral-100">Newsletter</h3>
       <div class="mt-5">
-        <form class="flex">
+        <form id="newsletter-form" class="flex">
+          {% csrf_token %}
           <input
+            id="newsletter-input"
             type="email"
             placeholder="contoh@email.com"
             name="newsletter"
             class="px-2 py-1"
+            required
           />
           <button
-            class="ml-2 px-2 py-1 border border-neutral-100 text-neutral-100"
-         disabled  >
+            class="ml-2 px-2 py-1 border border-neutral-100 text-neutral-100 hover:text-neutral-900 hover:bg-neutral-100"
+           >
             Daftarkan
           </button>
         </form>
+        <p id="newsletter-confirm" class="bg-green-600 mt-2 text-neutral-100 w-7/12"></p>
       </div>
     </div>
 

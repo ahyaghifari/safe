@@ -13,6 +13,11 @@ class Ruangan(models.Model):
     def __str__(self):
         return self.ruangan
 
+class WaktuPemesanan(models.Model):
+    waktu = models.CharField(verbose_name="Waktu Pemesanan", max_length=50)
+
+    def __str__(self):
+        return self.waktu
 
 class Reservation(models.Model):
     nama = models.CharField(
@@ -21,10 +26,10 @@ class Reservation(models.Model):
         verbose_name='Email Pemesan', max_length=254)
     telepon = models.CharField(
         verbose_name='Telepon/WA', max_length=50)
+    acara = models.CharField(max_length=100)
     tanggal_pemesanan = models.DateField(
         verbose_name='Tanggal Acara')
-    waktu_pemesanan = models.TimeField(verbose_name='Waktu Acara')
-    acara = models.CharField(max_length=100)
+    waktu_pemesanan = models.ForeignKey(WaktuPemesanan, on_delete=models.CASCADE)
     ruangan = models.ForeignKey(Ruangan, on_delete=models.CASCADE)
     audiens = models.ForeignKey(Audiens, on_delete=models.CASCADE)
     keterangan = models.TextField()

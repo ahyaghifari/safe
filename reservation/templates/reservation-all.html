@@ -1,0 +1,40 @@
+{% extends 'base.html' %}{% block content %}
+
+<!-- -->
+{% if messages %} {% for m in messages %}
+<div
+  class="messages flex justify-between items-center bg-neutral-800 text-neutral-100 p-1 mt-16 text-sm md:text-lg mx-auto md:w-10/12 lg:w-8/12"
+>
+  <p class="w-8/12 md:w-10/12 lg:w-11/12">{{ m }}</p>
+  <span class="material-symbols-sharp cursor-pointer close-message-btn">
+    close
+  </span>
+</div>
+{% endfor %} {% endif %}
+
+<div id="reservation-all" class="p-2">
+  <h1 class="text-3xl mt-16 mb-10">ALL RESERVATIONS</h1>
+
+  <div
+    class="reservation-container border border-neutral-300 flex flex-col md:flex-row md:flex-wrap items-center md:justify-around h-screen overflow-y-scroll py-3"
+  >
+    {% for r in reservasi %}
+    <div
+      class="reservations flex flex-col md:m-0 h-fit border w-11/12 sm:w-9/12 md:w-5/12 border-neutral-800 p-2 text-lg md:text-xl shadow-sm bg-red-300"
+    >
+      <div id="reservation-info">
+        <p>Nama Pemesan : <b> {{ r.nama }} </b></p>
+        <p>Acara : <b> {{ r.acara }} </b></p>
+        <p>Tanggal : <b> {{ r.tanggal_pemesanan }} </b></p>
+      </div>
+      <a
+        href="/reservasi/detail/{{ r.id }}"
+        class="mt-5 border border-neutral-600 p-1 hover:bg-neutral-800 hover:text-neutral-100"
+      >
+        Lihat Detail
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

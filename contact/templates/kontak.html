@@ -1,0 +1,36 @@
+{% extends 'base.html' %}{% block content %}
+
+<div id="contact" class="p-3 bg-neutral-800 text-neutral-100">
+  <!-- KONFIRMASI RESERVASI-->
+  {% if messages %}{% for m in messages %}
+  <div
+    class="messages flex justify-between items-center bg-neutral-100 text-neutral-800 p-1 mt-10 text-sm md:text-lg mx-auto md:w-10/12 lg:w-8/12"
+  >
+    <p class="w-8/12 md:w-10/12 lg:w-11/12">{{ m }}</p>
+    <span class="material-symbols-sharp cursor-pointer close-message-btn">
+      close
+    </span>
+  </div>
+  {% endfor %}{% endif %}
+
+  <h1 class="mt-16 text-5xl text-center uppercase md:text-6xl">Kontak</h1>
+  <p class="mt-4 text-lg md:text-2xl text-center">
+    Kamu dapat terhubung dengan kami dengan mengisi form di bawah ini
+  </p>
+
+  <form
+    action="/kontak/message/"
+    class="form-contact mt-10 flex text-xl flex-col w-11/12 mx-auto sm:w-9/12 md:w-8/12 lg:w-1/2 md:text-2xl"
+    method="post"
+  >
+    {% csrf_token %} {{ form.as_div }}
+    <button
+      type="submit"
+      class="text-neutral-900 bg-neutral-100 px-3 py-1 w-fit text-2xl mt-5 hover:scale-110"
+    >
+      Kirim
+    </button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}
+
+<div id="reservation-edit" class="p-3">
+  <h1 class="mt-10 text-3xl">Reservation Edit</h1>
+
+  <form
+    action="/reservasi/edit/{{ id }}"
+    method="post"
+    class="form-reservation text-xl md:text-2xl w-11/12 sm:w-10/12 md:w-8/12 lg:w-7/12 mx-auto"
+  >
+    {% csrf_token %} {{ form.as_div }}
+
+    <button class="bg-neutral-800 text-neutral-100 px-4 py-1 mt-10 text-right">
+      Update
+    </button>
+  </form>
+</div>
+
+{% endblock %}

@@ -9,7 +9,7 @@
     kamu kenyang dan kudapan untuk makan-makan santai
   </p>
 
-  <!-- KHUSU ADMIN -->
+  <!-- KHUSUS ADMIN -->
   {% if user.is_superuser %}
   <div id="menu-admin" class="mt-10 flex flex-col">
     <div id="add-admin" class="self-end">
@@ -47,9 +47,11 @@
       </h3>
       {% for m in menu %} {% if m.kategori.nama == k.nama %}
       <div
-        class="my-4 flex flex-col items-center w-5/12 md:w-full hover:scale-105"
+        class="menu my-4 flex flex-col items-center w-5/12 md:w-full cursor-pointer hover:scale-105 transition duration-300"
       >
-        <p class="text-xl xl:text-2xl">{{ m.nama }}</p>
+        <p class="text-lg lg:text-xl xl:text-2xl" id="{{ m.nama }}">
+          {{ m.nama }}
+        </p>
         <img
           src="{{ m.gambar }}"
           class="mt-1 aspect-square object-cover object-left"
@@ -63,6 +65,7 @@
     </div>
     {% endfor %}
   </div>
-</div>
 
+  {% include 'components/modal-menu.html' %}
+</div>
 {% endblock %}

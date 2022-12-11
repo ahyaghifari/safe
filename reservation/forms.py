@@ -9,5 +9,9 @@ class ReservationForm(ModelForm):
         exclude = ["konfirmasi", "selesai"]
         widgets = {
             'tanggal_pemesanan': widgets.DateInput(attrs={'type': 'date'}),
-            'waktu_pemesanan': widgets.DateInput(attrs={'type': 'time'})
         }
+
+class ReservationFormEdit(ModelForm):
+    class Meta:
+        model = Reservation
+        exclude = []

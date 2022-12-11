@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'index',
     'menu',
     'reservation',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en-US"
 
 TIME_ZONE = "UTC"
 
