@@ -18,7 +18,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from safe import settings
 
 urlpatterns = [
     path('', include('index.urls')),
@@ -27,4 +26,4 @@ urlpatterns = [
     path('kontak/', include('contact.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("admin/", admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
