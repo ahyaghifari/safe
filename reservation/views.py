@@ -67,7 +67,7 @@ def edit(request, id):
             formset.save()
             messages.success(
                 request, "Reservasi dari " + request.POST['nama'] + " pada tanggal "+ request.POST['tanggal_pemesanan'] + " sudah berhasil diubah")
-            return HttpResponseRedirect(reverse('/reservasi/detail/' + id))
+            return HttpResponseRedirect('/reservasi/detail/' + id)
 
     return render(request, 'reservation-edit.html', {'title' : 'RESERVATION EDIT', 'form':form, 'id':id})
 

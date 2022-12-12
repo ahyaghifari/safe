@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = ("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['safe.up.railway.app', '127.0.0.1']
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'contact',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [  
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
