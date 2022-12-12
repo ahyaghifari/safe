@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = ("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['safe.up.railway.app', '127.0.0.1']
 
@@ -81,23 +81,23 @@ CSRF_TRUSTED_ORIGINS=['https://safe.up.railway.app', 'http://127.0.0.1:8000']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databas
 DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv("PG_DATABASE"),
-#         'USER': os.getenv("PG_USER"),
-#         'PASSWORD': os.getenv("PG_PASSWORD"),
-#         'HOST': os.getenv("PG_HOST"),
-#         'PORT': os.getenv("PG_PORT"),
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("PG_DATABASE"),
+        'USER': os.getenv("PG_USER"),
+        'PASSWORD': os.getenv("PG_PASSWORD"),
+        'HOST': os.getenv("PG_HOST"),
+        'PORT': os.getenv("PG_PORT"),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
