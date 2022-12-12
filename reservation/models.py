@@ -29,7 +29,7 @@ class Reservation(models.Model):
     acara = models.CharField(max_length=100)
     tanggal_pemesanan = models.DateField(
         verbose_name='Tanggal Acara')
-    waktu_pemesanan = models.ForeignKey(WaktuPemesanan, on_delete=models.CASCADE)
+    waktu_pemesanan = models.ForeignKey(WaktuPemesanan, on_delete=models.CASCADE, verbose_name="Waktu Acara")
     ruangan = models.ForeignKey(Ruangan, on_delete=models.CASCADE)
     audiens = models.ForeignKey(Audiens, on_delete=models.CASCADE)
     keterangan = models.TextField()
